@@ -1,8 +1,3 @@
-/* By: shir babay id : 211504642
-Cours Workshop in C ++
-Exercise 3 Question 3
-Description :
-*/
 #include<iostream>
 #include <string>
 #include <string.h>
@@ -12,19 +7,19 @@ using namespace std;
 int main()
 {
 	int size1, size2;
-	char str1[15];//äâãøú îòøê ìîçøåú äøàùåðä
+	char str1[15];//Ã¤Ã¢Ã£Ã¸Ãº Ã®Ã²Ã¸Ãª Ã¬Ã®Ã§Ã¸Ã¥Ãº Ã¤Ã¸Ã Ã¹Ã¥Ã°Ã¤
 	cin.getline(str1, 15);
-	char str2[15];//äâãøú îòøê ìîçøåú äùðéä
+	char str2[15];//Ã¤Ã¢Ã£Ã¸Ãº Ã®Ã²Ã¸Ãª Ã¬Ã®Ã§Ã¸Ã¥Ãº Ã¤Ã¹Ã°Ã©Ã¤
 	cin.getline(str2, 15);
-	size1 = strlen(str1);//âåãì äîéìä
-	size2 = strlen(str2);//âåãì äîéìä
+	size1 = strlen(str1);//Ã¢Ã¥Ã£Ã¬ Ã¤Ã®Ã©Ã¬Ã¤
+	size2 = strlen(str2);//Ã¢Ã¥Ã£Ã¬ Ã¤Ã®Ã©Ã¬Ã¤
 	MyString a(str1, size1);
 	MyString b(str2,size2);
 	int n;
 	cin >> n;
 	char tav;
 	int index;
-	cin >> tav >> index;//÷ìéèú òøëéí ìçì÷ äùðé ùì äúåëðéú
+	cin >> tav >> index;//Ã·Ã¬Ã©Ã¨Ãº Ã²Ã¸Ã«Ã©Ã­ Ã¬Ã§Ã¬Ã· Ã¤Ã¹Ã°Ã© Ã¹Ã¬ Ã¤ÃºÃ¥Ã«Ã°Ã©Ãº
 	if (a > b)
 		cout << "a>b\n";
 	else if (a < b)
