@@ -1,5 +1,6 @@
 #include<iostream>
 #include <string>
+#include <cstring>
 #include <string.h>
 #include"MyString.h"
 #pragma warning (disable:4996)
