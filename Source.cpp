@@ -27,13 +27,13 @@ int main()
 		cout << "a<b\n";
 	else if (!(a != b))
 		cout << "a=b\n";
-	char* help;
-	help= (b.insert(n, str1)); // instead of str1 write 'a.string'.
-	if(help)
-		cout << help;
+	//char* help;
+	MyString help = (b.insert(n, str1)); // instead of str1 write 'a.string'.
+	if(help.string)
+		cout << help.string;
 	char tav;
 	int index;
 	help[index] = tav;
-	cout << help;
+	cout << help.string;
 	return 0;
 }
