@@ -17,17 +17,19 @@ int main()
 	MyString b(str2,size2);
 	int n;
 	cin >> n;
-	char tav;
-	int index;
-	cin >> tav >> index;//÷ìéèú òøëéí ìçì÷ äùðé ùì äúåëðéú
+	//char tav;
+	//int index;
+	//cin >> tav >> index;//÷ìéèú òøëéí ìçì÷ äùðé ùì äúåëðéú
 	if (a > b)
 		cout << "a>b\n";
 	else if (a < b)
 		cout << "a<b\n";
 	else if (!(a != b))
 		cout << "a=b\n";
-	char* help;
-	help=(b.insert(n, str1));
+	//char* help;
+	//help=
+	(b.insert(n, str1)); // instead of str1 write 'a.string'.
+	
 	
 
 
