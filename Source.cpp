@@ -1,6 +1,7 @@
 #include<iostream>
 #include <string>
-#include <string.h>
+#include <cstring>
+//#include <string.h>
 #include"MyString.h"
 #pragma warning (disable:4996)
 using namespace std;
