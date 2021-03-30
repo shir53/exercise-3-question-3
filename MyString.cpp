@@ -1,16 +1,10 @@
 #include "MyString.h"
 #include<iostream>
-//#include <string.h>
+#include <string.h>
 #include <string>
 #include <cstring>
 #pragma warning(disable : 4996)
 using namespace std;
-MyString::MyString(int num)
-{
-	length = 0;
-	string = new char[1];
-}
-
 MyString::MyString(char* word, int size)
 {
 	length = size;
@@ -27,11 +21,8 @@ MyString::~MyString()
 
 bool MyString::operator<(MyString& s)
 {
-	int check=strcmp(string, s.string);//áãé÷ä àéæä îäîçøåæåú âãåìä éåúø
-	if (check < 0)
-		return true;
-	return false;
-	// Better way: return (strcmp(string, s.string) < 0);
+	int check= strcmp(string, s.string);//בדיקה איזה מהמחרוזות גדולה יותר
+	return (strcmp(string, s.string) < 0);
 }
 
 MyString MyString::insert(int index, const char* str)
@@ -39,30 +30,28 @@ MyString MyString::insert(int index, const char* str)
 	if (index > length)
 	{
 		cout << "ERROR\n";
-		MyString help(1);
-		return help;	// Prefer just to return NULL -> return NULL;
+		char* str = NULL;
+		MyString help(str, 1);
+		return help;
 	}
 	int size = strlen(str) + index;
 	char* help = new char[size];
 	int i = 0;
-	for (; i < index; i++)	// Part I from the second string.
-		*(help + i) = *(string + i);
-	for (int j = 0; i < size; i++, j++)	// The entire first string.
-		help[i] = str[j];
-	// Now we need to complete the proccess and copy the rest of the second string.
-	for(int k=index; i < (length + strlen(str)); k++, i++)
-		help[i] = string[k];
-	return help;
+	for (; i < index; i++)
+		*(help + i) = *(str + i);
+	for (int j = 0; i < size; i++, j++)
+		help[i] = string[j];
+	MyString myHelp(help, size);
+	return myHelp;
+}
+char* MyString::getString()
+{
+	return string;
 }
 
 bool MyString::operator>(MyString& s)
 {
-	int check;
-	check = strcmp(string,s.string);
-	if (check > 0)
-		return true;
-	return false;
-	//Better way: return (strcmp(string, s.string) > 0);
+	return (strcmp(string, s.string) > 0);
 }
 
 char& MyString::operator[](int index)
@@ -77,28 +66,30 @@ char& MyString::operator[](int index)
 		return*(string + index);
 }
 
+MyString::MyString(const MyString& ms)
+{
+	length = strlen(ms.string);
+	if (ms.string)
+	{
+		string = new char[length + 1];
+		strcpy(string, ms.string);
+	}
+	else
+		string = NULL;
+}
+
 bool MyString::operator<=(MyString& s)
 {
-	int check = strcmp(string, s.string);//áãé÷ä àéæä îäîçøåæåú âãåìä éåúø
-	if (check <= 0)
-		return true;
-	return false;
-	//Better way: return (strcmp(string, s.string) <= 0);
+	return (strcmp(s.string, string) <= 0);
 }
 
 bool MyString::operator>=(MyString& s)
 {
-	int check = strcmp(string, s.string);//áãé÷ä àéæä îäîçøåæåú âãåìä éåúø
-	if (check >= 0)
-		return true;
-	return false;
-	//Better way: return (strcmp(string, s.string) >= 0);
+    return (strcmp(s.string, string)>=0);
+	
 }
 
 bool MyString::operator!=(MyString& s)
 {
-	int check = strcmp(s.string, string);//áãé÷ä àéæä îäîçøåæåú âãåìä éåúø
-	if (check == 0)
-		return true;
-	return false;
+	return (strcmp(s.string, string)==0);
 }
