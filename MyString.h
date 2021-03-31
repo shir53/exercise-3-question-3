@@ -1,4 +1,3 @@
-
 #pragma once
 class MyString
 {
@@ -9,7 +8,7 @@ private:
 public:
 	//constructors:
 	MyString(char* word, int size);
-	MyString(int num);
+	MyString();
 	MyString(const MyString& ms);
 	~MyString();
 	MyString insert(int index, const char* str);
@@ -21,7 +20,4 @@ public:
 	bool operator<=(MyString& s);
 	bool operator>=(MyString& s);
 	bool operator!=(MyString& s);
-
-
 };
-
