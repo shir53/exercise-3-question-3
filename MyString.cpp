@@ -1,10 +1,12 @@
 #include "MyString.h"
 #include<iostream>
 #include <string.h>
+#include <cstdlib>
 #include <string>
 #include <cstring>
 #pragma warning(disable : 4996)
 using namespace std;
+
 MyString::MyString(char* word, int size)
 {
 	length = size;
@@ -12,10 +14,22 @@ MyString::MyString(char* word, int size)
 	strcpy(string, word);
 }
 
-MyString::MyString(int num)
+MyString::MyString()
 {
 	length = 0;
-	string = new char[1];
+	string = NULL;
+}
+
+MyString::MyString(const MyString& ms)// copy constractor
+{
+	length = ms.length;
+	if (ms.string)
+	{
+		string = new char[length + 1];
+		strcpy(string, ms.string);
+	}
+	else
+		string = NULL;
 }
 
 MyString::~MyString()
@@ -27,17 +41,16 @@ MyString::~MyString()
 
 bool MyString::operator<(MyString& s)
 {
-	int check= strcmp(string, s.string);//בדיקה איזה מהמחרוזות גדולה יותר
+	//int check= strcmp(string, s.string);//בדיקה איזה מהמחרוזות גדולה יותר
 	return (strcmp(string, s.string) < 0);
 }
 
 MyString MyString::insert(int index, const char* str)
 {
-	if (index > length)
+	if ((index > length) || (index < 0))
 	{
 		cout << "ERROR\n";
-		char* str = NULL;
-		MyString help(str, 1);
+		MyString help;
 		return help;
 	}
 	int size = strlen(str) + length+1;
@@ -73,7 +86,7 @@ bool MyString::operator>(MyString& s)
 
 char& MyString::operator[](int index)
 {
-	if (index > length)
+	if (index >= length)
 	{
 		cout << "ERROR\n";
 		exit(-1);
@@ -81,18 +94,6 @@ char& MyString::operator[](int index)
 		
 	else
 		return*(string + index);
-}
-
-MyString::MyString(const MyString& ms)// copy constractor
-{
-	length = strlen(ms.string);
-	if (ms.string)
-	{
-		string = new char[length + 1];
-		strcpy(string, ms.string);
-	}
-	else
-		string = NULL;
 }
 
 bool MyString::operator<=(MyString& s)
@@ -108,5 +109,5 @@ bool MyString::operator>=(MyString& s)
 
 bool MyString::operator!=(MyString& s)
 {
-	return (strcmp(s.string, string)==0);
+	return (strcmp(s.string, string));
 }
