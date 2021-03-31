@@ -43,6 +43,7 @@ MyString MyString::insert(int index, const char* str)
 		strHelp[i] = str[j];//העתקת המחרוזת השניה
 	for (int k=index; i < size - 1; i++,k++)
 		strHelp[i] = string[k];//העתקת החלק השני של המחרוזת המקורית
+	strHelp[i] = '\0';
 	MyString help(strHelp, size);
 	return help;
 
