@@ -8,7 +8,7 @@ using namespace std;
 MyString::MyString(char* word, int size)
 {
 	length = size;
-	char* string = new char(length + 1);
+	string = new char(length + 1);
 	strcpy(string, word);
 }
 
@@ -34,15 +34,25 @@ MyString MyString::insert(int index, const char* str)
 		MyString help(str, 1);
 		return help;
 	}
-	int size = strlen(str) + index;
-	char* help = new char[size];
+	int size = strlen(str) + length+1;
+	char* strHelp = new char[size];
 	int i = 0;
 	for (; i < index; i++)
+		*(strHelp + i) = *(string + i);//העתקת החלק הראשון של המחרוזת המקורית
+	for (int j = 0; j < strlen(str); j++, i++)
+		strHelp[i] = str[j];//העתקת המחרוזת השניה
+	for (int k=index; i < size - 1; i++,k++)
+		strHelp[i] = string[k];//העתקת החלק השני של המחרוזת המקורית
+	MyString help(strHelp, size);
+	return help;
+
+	/*int i = 0;
+	for (; i < index; i++)
 		*(help + i) = *(str + i);
-	for (int j = 0; i < size; i++, j++)
+	for (int j = 0; i < size-1; i++, j++)
 		help[i] = string[j];
 	MyString myHelp(help, size);
-	return myHelp;
+	return myHelp;*/
 }
 char* MyString::getString()
 {
@@ -66,7 +76,7 @@ char& MyString::operator[](int index)
 		return*(string + index);
 }
 
-MyString::MyString(const MyString& ms)
+MyString::MyString(const MyString& ms)// copy constractor
 {
 	length = strlen(ms.string);
 	if (ms.string)
