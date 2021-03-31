@@ -12,6 +12,12 @@ MyString::MyString(char* word, int size)
 	strcpy(string, word);
 }
 
+MyString::MyString(int num)
+{
+	length = 0;
+	string = new char[1];
+}
+
 MyString::~MyString()
 {
 	if (string)
