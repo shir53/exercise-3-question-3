@@ -1,3 +1,11 @@
+/******************************************************************************
+
+							  Online C++ Compiler.
+			   Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
 #include<iostream>
 #include <string>
 #include <cstring>
@@ -15,7 +23,7 @@ int main()
 	size1 = strlen(str1);//גודל המילה
 	size2 = strlen(str2);//גודל המילה
 	MyString a(str1, size1);
-	MyString b(str2,size2);
+	MyString b(str2, size2);
 	int index;
 	cin >> index;
 	if (a > b)
@@ -32,6 +40,4 @@ int main()
 	help[index] = tav;
 	cout << help.getString() << endl;
 	return 0;
-
-
 }
