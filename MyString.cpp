@@ -1,25 +1,23 @@
 #include "MyString.h"
 #include<iostream>
 #include <string.h>
-#include <cstdlib>
 #include <string>
 #include <cstring>
+#include <cstdlib>
 #pragma warning(disable : 4996)
 using namespace std;
-
 MyString::MyString(char* word, int size)
 {
 	length = size;
 	string = new char(length + 1);
 	strcpy(string, word);
 }
-
 MyString::MyString()
 {
 	length = 0;
 	string = NULL;
-}
 
+}
 MyString::MyString(const MyString& ms)// copy constractor
 {
 	length = ms.length;
@@ -41,13 +39,12 @@ MyString::~MyString()
 
 bool MyString::operator<(MyString& s)
 {
-	//int check= strcmp(string, s.string);//בדיקה איזה מהמחרוזות גדולה יותר
 	return (strcmp(string, s.string) < 0);
 }
 
 MyString MyString::insert(int index, const char* str)
 {
-	if ((index > length) || (index < 0))
+	if (index > length || index < 0)
 	{
 		cout << "ERROR\n";
 		MyString help;
@@ -62,7 +59,6 @@ MyString MyString::insert(int index, const char* str)
 		strHelp[i] = str[j];//העתקת המחרוזת השניה
 	for (int k=index; i < size - 1; i++,k++)
 		strHelp[i] = string[k];//העתקת החלק השני של המחרוזת המקורית
-	strHelp[i] = '\0';
 	MyString help(strHelp, size);
 	return help;
 
