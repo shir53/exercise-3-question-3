@@ -15,9 +15,9 @@ public:
 	char* getString();
 	char& operator[](int index);
 	//bool operators:
-	bool operator<(MyString& s);
-	bool operator>(MyString& s);
-	bool operator<=(MyString& s);
-	bool operator>=(MyString& s);
-	bool operator!=(MyString& s);
+	bool operator<(const MyString& s) const;
+	bool operator>(const MyString& s) const;
+	bool operator<=(const MyString& s) const;
+	bool operator>=(const MyString& s) const;
+	bool operator!=(const MyString& s) const;
 };
