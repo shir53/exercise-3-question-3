@@ -109,8 +109,8 @@ bool MyString::operator!=(MyString& s)
 	if ((x == 0) && length == s.length)//במקרה שהמחרוזות יצאו שונות, אבל האורך שלהן שווה
 	{
 		for (int i = 0; i < length; i++)
-			if ((string[i] != s.string[i]) || (string[i] - s.string[i] != 32) || (string[i] - s.string[i] != -32))
-				return false;
+			if ((string[i] == s.string[i]) || (string[i] - s.string[i] == 32) || (string[i] - s.string[i] == -32))
+				return true;
 	}
 	return (strcmp(s.string, string));
 }
